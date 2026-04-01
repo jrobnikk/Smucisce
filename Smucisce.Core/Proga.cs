@@ -15,9 +15,14 @@ namespace Smucisce.Core
 
     public class Proga
     {
+        public List<Proga> Proge { get; } = new List<Proga>();
         public string Naziv { get; }
         public int Dolzina { get; }
         public TezavnostProge Tezavnost { get; }
+        public void DodajProgo(Proga p)
+        {
+            Proge.Add(p);
+        }
 
         public Proga(string naziv, int dolzina, TezavnostProge tezavnost)
         {
@@ -27,8 +32,9 @@ namespace Smucisce.Core
         }
         public override string ToString()
         {
-            string status = Obratuje ? "DA" : "NE";
-            return $"{Naziv} ({Tezavnost}, {Dolzina} m) {status}";
+            string status = Obratuje ? "ODPRTA" : "ZAPRTA";
+
+            return $"{Naziv} | {Dolzina} m | {Tezavnost} | {status}";
         }
 
         public bool Obratuje { get; private set; } = true;

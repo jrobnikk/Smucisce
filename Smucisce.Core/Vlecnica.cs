@@ -9,9 +9,10 @@ namespace Smucisce.Core
 
     public abstract class Vlecnica
     {
+
         public string Naziv { get; }
         protected int kapacitetaNaUro;
-        public bool Obratuje { get; private set; } = false;
+        public bool Obratuje { get; private set; } = true;
         protected List<Proga> proge = new List<Proga>();
 
         public static int SteviloVlecnic { get; private set; }
@@ -47,8 +48,9 @@ namespace Smucisce.Core
         }
         public override string ToString()
         {
-            string status = Obratuje ? "🟢" : "🔴";
-            return $"{Naziv} ({status})";
+            string status = Obratuje ? "OBRATUJE" : "NE OBRATUJE";
+
+            return $"{Naziv} | Kapaciteta: {kapacitetaNaUro}/h | {status}";
         }
 
         public abstract int IzracunajPretok();
